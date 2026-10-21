@@ -1,0 +1,28 @@
+---
+title: "Baby Names Over Time"
+format: html
+execute:
+  echo: false
+  message: false
+  warning: false
+---
+
+```{r}
+library(tidyverse)
+
+# Read the baby names dataset
+names_df <- read_csv("ssa-baby-names.csv")
+
+# Filter for the name "Ethan" and plot over time
+names_df |>
+  filter(name == "Ethan") |>
+  ggplot(aes(x = year, y = count, color = sex)) +
+  geom_line() +
+  labs(
+    title = "Popularity of the Name 'Ethan' Over Time",
+    x = "Year",
+    y = "Number of Babies",
+    color = "Sex"
+  ) +
+  theme_minimal()
+```
